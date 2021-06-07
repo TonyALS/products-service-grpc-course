@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.tony.grpc";
+option java_outer_classname = "ProductsGrpc";
+option objc_class_prefix = "HLW";
+
+package br.com.tony.grpc;
+
+service ProductsGrpcService {
+  rpc send (ProductsGrpcRequest) returns (ProductsGrpcReply) {}
+}
+
+message ProductsGrpcRequest {
+  string name = 1;
+}
+
+message ProductsGrpcReply {
+  string message = 1;
+}
