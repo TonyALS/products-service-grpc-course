@@ -1,20 +1,23 @@
 syntax = "proto3";
 
+import "google/protobuf/wrappers.proto";
+
 option java_multiple_files = true;
 option java_package = "br.com.tony.grpc";
-option java_outer_classname = "ProductsGrpc";
-option objc_class_prefix = "HLW";
 
 package br.com.tony.grpc;
 
-service ProductsGrpcService {
-  rpc send (ProductsGrpcRequest) returns (ProductsGrpcReply) {}
+service ProductsService {
+  rpc Create (ProductRequest) returns (ProductResponse) {}
 }
 
-message ProductsGrpcRequest {
-  string name = 1;
+message ProductRequest {
+  google.protobuf.StringValue name = 1;
+  google.protobuf.DoubleValue price = 2;
 }
 
-message ProductsGrpcReply {
-  string message = 1;
+message ProductResponse {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+  google.protobuf.DoubleValue price = 3;
 }
